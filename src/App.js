@@ -78,8 +78,6 @@ const App = () => {
       break;
   }
 
-  console.log(data);
-
   return (
     <div className='flex h-screen justify-center items-center px-8 xl:px-0'>
       <div className='w-[90vw] max-w-[1440px] h-[90vh] p-16 mx-auto bg-gradient-to-tl from-[#4D58DB] via-[#564ACD] to-[#6466DB] rounded-[40px]'>
@@ -103,10 +101,10 @@ const App = () => {
         </form>
         <div className='max-w-[400px] mx-auto text-white'>
           {/* city/country name */}
-          <h2 className='text-6xl font-extrabold drop-shadow-lg'>
+          <h2 className='text-6xl text-center font-extrabold drop-shadow-lg'>
             {data.name}
           </h2>
-          <div className='flex flex-row -space-x-28 space-y-14 items-center relative h-80'>
+          <div className='flex flex-row -space-x-24 space-y-14 items-center relative h-80'>
             <div className='relative'>
               <h2 className='text-[180px] lg:text-[220px] font-extrabold leading-none tracking-[-6px] text-transparent bg-clip-text bg-gradient-to-t from-white/30 to-white drop-shadow-lg'>
                 {parseInt(data.main.temp)}
