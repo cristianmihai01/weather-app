@@ -24,7 +24,7 @@ const App = () => {
   // api key
   const APIkey = 'bcf2048bc3be154bded8f277f580ba2e';
   const [data, setData] = useState(null);
-  const [location, setLocation] = useState('Bucharest');
+  const [location, setLocation] = useState('Constanta');
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
 
@@ -111,7 +111,9 @@ const App = () => {
         {/* card inner */}
         <div className='my-20'>
           <div className='flex justify-center items-center'>
-            <div className='text-[144px] leading-none font-light'>15</div>
+            <div className='text-[144px] leading-none font-light'>
+              {parseInt(data.main.temp)}
+            </div>
             <div className='text-4xl'>
               <TbTemperatureCelsius />
             </div>
@@ -127,13 +129,21 @@ const App = () => {
               <div className='text-[20px]'>
                 <BsEye />
               </div>
-              <div>Visibility {data.visibility / 1000}km</div>
+              <div>
+                Visibility{' '}
+                <span className='ml-2'>{data.visibility / 1000}km</span>
+              </div>
             </div>
             <div className='flex items-center gap-x-1'>
               <div className='text-[20px]'>
                 <BsThermometer />
               </div>
-              <div>Feels like {parseInt(data.main.feels_like)} &#8451;</div>
+              <div className='flex'>
+                Feels like
+                <div className='flex ml-2'>
+                  {parseInt(data.main.feels_like)} <TbTemperatureCelsius />
+                </div>
+              </div>
             </div>
           </div>
           <div className='flex justify-between'>
@@ -141,13 +151,17 @@ const App = () => {
               <div className='text-[20px]'>
                 <BsWater />
               </div>
-              <div>Humidity {data.main.humidity}%</div>
+              <div>
+                Humidity <span className='ml-2'>{data.main.humidity}%</span>
+              </div>
             </div>
             <div className='flex items-center gap-x-1'>
               <div className='text-[20px]'>
                 <BsWind />
               </div>
-              <div>Wind {data.wind.speed} m/s</div>
+              <div>
+                Wind <span className='ml-2'>{data.wind.speed} m/s</span>
+              </div>
             </div>
           </div>
         </div>
