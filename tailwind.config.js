@@ -2,9 +2,13 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
-      primary: 'Alegreya Sans',
+      primary: 'Poppins',
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        gradientBg: "url('/src/assets/img/bg.png')",
+      },
+    },
   },
   plugins: [],
 };
