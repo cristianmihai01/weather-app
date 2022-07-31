@@ -81,9 +81,9 @@ const App = () => {
 
   return (
     <div className='flex h-screen justify-center items-center px-8 xl:px-0'>
-      <div className='w-full max-w-[1440px] h-[90vh] p-16 mx-auto bg-gradient-to-tl from-[#4D58DB] via-[#564ACD] to-[#6466DB] rounded-[40px]'>
+      <div className='w-[90vw] max-w-[1440px] h-[90vh] p-16 mx-auto bg-gradient-to-tl from-[#4D58DB] via-[#564ACD] to-[#6466DB] rounded-[40px]'>
         {/* form */}
-        <form className='bg-white h-16 max-w-[358px] mx-auto rounded-full'>
+        <form className='bg-white h-16 max-w-[400px] mx-auto rounded-full mb-12'>
           <div className='flex h-full justify-between p-1'>
             <input
               className='flex-1 bg-transparent border-none outline-none pl-6'
@@ -92,22 +92,26 @@ const App = () => {
               placeholder='Enter city name'
             />
             <button
-              className='bg-[#5348DE] w-20 rounded-full'
+              className='bg-[#45afff] hover:bg-[#38a7fc] w-20 rounded-full flex justify-center items-center transition'
               onClick={(e) => handleSubmit(e)}
               type='submit'
             >
-              <BiSearchAlt />
+              <BiSearchAlt className='text-2xl text-white' />
             </button>
           </div>
         </form>
-        <div className='max-w-[420px] mx-auto text-white'>
+        <div className='max-w-[400px] mx-auto text-white'>
           <h2 className='text-6xl font-extrabold drop-shadow-lg'>
             {data.name}
           </h2>
-          <div className='text-2xl'>{parseInt(data.main.temp)} &#8451;</div>
-          {/* image */}
-          <div>
-            <img src={imageSrc} />
+          <div className='flex flex-row -space-x-28 items-center relative'>
+            <div className='text-[180px] lg:text-[220px] font-extrabold'>
+              {parseInt(data.main.temp)}
+            </div>
+            {/* image */}
+            <div className='flex-1'>
+              <img src={imageSrc} />
+            </div>
           </div>
         </div>
       </div>
