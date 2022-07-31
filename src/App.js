@@ -87,6 +87,10 @@ const App = () => {
       break;
   }
 
+  // const months
+  const months = ['January'];
+  let date = new Date();
+
   return (
     <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center pt-24'>
       {/* form */}
@@ -97,8 +101,11 @@ const App = () => {
         <div className='flex items-center gap-x-5'>
           <div className='text-[87px] text-sky-500'>{icon}</div>
           <div>
-            <div>Valle de Angeles, HN</div>
-            <div>Monday 01/17/2022</div>
+            <div>{data.name}</div>
+            <div>
+              {date.getUTCDate()}/{date.getUTCMonth() + 1}/
+              {date.getUTCFullYear()}
+            </div>
           </div>
         </div>
         {/* card inner */}
@@ -116,13 +123,13 @@ const App = () => {
               <div className='text-[20px]'>
                 <BsEye />
               </div>
-              <div>Visibility</div>
+              <div>Visibility {data.visibility / 1000}km</div>
             </div>
             <div className='flex items-center gap-x-1'>
               <div className='text-[20px]'>
                 <BsThermometer />
               </div>
-              <div>Feels like</div>
+              <div>Feels like {parseInt(data.main.feels_like)} &#8451;</div>
             </div>
           </div>
           <div className='flex justify-between'>
@@ -130,13 +137,13 @@ const App = () => {
               <div className='text-[20px]'>
                 <BsWater />
               </div>
-              <div>Humidity</div>
+              <div>Humidity {data.main.humidity}%</div>
             </div>
             <div className='flex items-center gap-x-1'>
               <div className='text-[20px]'>
                 <BsWind />
               </div>
-              <div>Wind</div>
+              <div>Wind {data.wind.speed} m/s</div>
             </div>
           </div>
         </div>
