@@ -62,7 +62,7 @@ const App = () => {
 
   console.log(data);
 
-  // set image src accourding to the weather
+  // set icon according to the weather
   switch (data.weather[0].main) {
     case 'Clouds':
       icon = <IoMdCloudy />;
@@ -130,7 +130,7 @@ const App = () => {
               <div className='text-[20px]'>
                 <BsWater />
               </div>
-              <div>Feels like</div>
+              <div>Humidity</div>
             </div>
             <div className='flex items-center gap-x-1'>
               <div className='text-[20px]'>
