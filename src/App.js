@@ -18,6 +18,7 @@ import {
   BsThermometer,
   BsWind,
 } from 'react-icons/bs';
+import { TbTemperatureCelsius } from 'react-icons/tb';
 
 const App = () => {
   // api key
@@ -58,10 +59,9 @@ const App = () => {
     );
   }
 
-  let icon = '';
-
   console.log(data);
 
+  let icon = '';
   // set icon according to the weather
   switch (data.weather[0].main) {
     case 'Clouds':
@@ -94,14 +94,14 @@ const App = () => {
   return (
     <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center pt-24'>
       {/* form */}
-      <form className='mb-48'>form</form>
+      <form>form</form>
       {/* card */}
       <div className='w-full max-w-[450px] bg-black/20 text-white backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
         {/* card top */}
         <div className='flex items-center gap-x-5'>
           <div className='text-[87px] text-sky-500'>{icon}</div>
           <div>
-            <div>{data.name}</div>
+            <div className='text-2xl font-semibold'>{data.name}</div>
             <div>
               {date.getUTCDate()}/{date.getUTCMonth() + 1}/
               {date.getUTCFullYear()}
@@ -109,12 +109,16 @@ const App = () => {
           </div>
         </div>
         {/* card inner */}
-        <div>
-          <div>
-            <div>15</div>
-            <div>degree</div>
+        <div className='my-20'>
+          <div className='flex justify-center items-center'>
+            <div className='text-[144px] leading-none font-light'>15</div>
+            <div className='text-4xl'>
+              <TbTemperatureCelsius />
+            </div>
           </div>
-          <div className='capitalize'>{data.weather[0].main}</div>
+          <div className='capitalize text-center'>
+            {data.weather[0].description}
+          </div>
         </div>
         {/* card bottom */}
         <div className='max-w-[378px] mx-auto flex flex-col gap-y-6'>
