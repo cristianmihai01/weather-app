@@ -24,7 +24,7 @@ const App = () => {
   // api key
   const APIkey = 'bcf2048bc3be154bded8f277f580ba2e';
   const [data, setData] = useState(null);
-  const [location, setLocation] = useState('Constanta');
+  const [location, setLocation] = useState('Bucharest');
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
 
@@ -127,7 +127,7 @@ const App = () => {
         {/* card bottom */}
         <div className='max-w-[378px] mx-auto flex flex-col gap-y-6'>
           <div className='flex justify-between'>
-            <div className='flex items-center gap-x-1'>
+            <div className='flex items-center gap-x-2'>
               <div className='text-[20px]'>
                 <BsEye />
               </div>
@@ -136,7 +136,7 @@ const App = () => {
                 <span className='ml-2'>{data.visibility / 1000}km</span>
               </div>
             </div>
-            <div className='flex items-center gap-x-1'>
+            <div className='flex items-center gap-x-2'>
               <div className='text-[20px]'>
                 <BsThermometer />
               </div>
@@ -149,7 +149,7 @@ const App = () => {
             </div>
           </div>
           <div className='flex justify-between'>
-            <div className='flex items-center gap-x-1'>
+            <div className='flex items-center gap-x-2'>
               <div className='text-[20px]'>
                 <BsWater />
               </div>
@@ -157,7 +157,7 @@ const App = () => {
                 Humidity <span className='ml-2'>{data.main.humidity}%</span>
               </div>
             </div>
-            <div className='flex items-center gap-x-1'>
+            <div className='flex items-center gap-x-2'>
               <div className='text-[20px]'>
                 <BsWind />
               </div>
