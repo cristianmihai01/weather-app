@@ -101,7 +101,9 @@ const App = () => {
         <div className='flex items-center gap-x-5'>
           <div className='text-[87px] text-sky-500'>{icon}</div>
           <div>
-            <div className='text-2xl font-semibold'>{data.name}</div>
+            <div className='text-2xl font-semibold'>
+              {data.name}, {data.sys.country}
+            </div>
             <div>
               {date.getUTCDate()}/{date.getUTCMonth() + 1}/
               {date.getUTCFullYear()}
@@ -130,7 +132,7 @@ const App = () => {
                 <BsEye />
               </div>
               <div>
-                Visibility{' '}
+                Visibility
                 <span className='ml-2'>{data.visibility / 1000}km</span>
               </div>
             </div>
