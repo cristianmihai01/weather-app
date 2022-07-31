@@ -3,9 +3,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // import icons
-import { IoMdSunny, IoMdRainy, IoMdCloudy, IoMdSnow } from 'react-icons/io';
-import { BsFillCloudHaze2Fill, BsCloudDrizzleFill } from 'react-icons/bs';
-import { RiThunderstormsFill } from 'react-icons/ri';
+import {
+  IoMdSunny,
+  IoMdRainy,
+  IoMdCloudy,
+  IoMdSnow,
+  IoMdThunderstorm,
+} from 'react-icons/io';
+import {
+  BsFillCloudHaze2Fill,
+  BsCloudDrizzleFill,
+  BsEye,
+  BsWater,
+  BsThermometer,
+  BsWind,
+} from 'react-icons/bs';
 
 const App = () => {
   // api key
@@ -71,7 +83,7 @@ const App = () => {
       icon = <IoMdSnow />;
       break;
     case 'Thunderstorm':
-      icon = <RiThunderstormsFill />;
+      icon = <IoMdThunderstorm />;
       break;
   }
 
@@ -80,7 +92,7 @@ const App = () => {
       {/* form */}
       <form className='mb-48'>form</form>
       {/* card */}
-      <div className='w-full max-w-[450px] bg-black/20 backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
+      <div className='w-full max-w-[450px] bg-black/20 text-white backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
         {/* card top */}
         <div className='flex items-center gap-x-5'>
           <div className='text-[87px] text-sky-500'>{icon}</div>
@@ -100,23 +112,31 @@ const App = () => {
         {/* card bottom */}
         <div className='max-w-[378px] mx-auto flex flex-col gap-y-6'>
           <div className='flex justify-between'>
-            <div className='flex gap-x-1'>
-              <div>icon</div>
-              <div>text</div>
+            <div className='flex items-center gap-x-1'>
+              <div className='text-[20px]'>
+                <BsEye />
+              </div>
+              <div>Visibility</div>
             </div>
-            <div className='flex gap-x-1'>
-              <div>icon</div>
-              <div>text</div>
+            <div className='flex items-center gap-x-1'>
+              <div className='text-[20px]'>
+                <BsThermometer />
+              </div>
+              <div>Feels like</div>
             </div>
           </div>
           <div className='flex justify-between'>
-            <div className='flex gap-x-1'>
-              <div>icon</div>
-              <div>text</div>
+            <div className='flex items-center gap-x-1'>
+              <div className='text-[20px]'>
+                <BsWater />
+              </div>
+              <div>Feels like</div>
             </div>
-            <div className='flex gap-x-1'>
-              <div>icon</div>
-              <div>text</div>
+            <div className='flex items-center gap-x-1'>
+              <div className='text-[20px]'>
+                <BsWind />
+              </div>
+              <div>Wind</div>
             </div>
           </div>
         </div>
