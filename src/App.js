@@ -9,6 +9,7 @@ import {
   IoMdCloudy,
   IoMdSnow,
   IoMdThunderstorm,
+  IoMdSearch,
 } from 'react-icons/io';
 import {
   BsFillCloudHaze2Fill,
@@ -28,12 +29,16 @@ const App = () => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
 
-  const handleSearch = (e) => {
+  const handleSubmit = (e) => {
     if (inputValue !== '') {
       setLocation(inputValue);
     }
     document.querySelector('input').value = '';
     e.preventDefault();
+  };
+
+  const handleInput = (e) => {
+    setInputValue(e.target.value);
   };
 
   // fetch data
@@ -42,14 +47,19 @@ const App = () => {
     axios
       .get(url)
       .then((res) => {
-        setTimeout(() => {
-          setData(res.data);
-        }, 1000);
+        setData(res.data);
       })
       .catch((err) => {
         setError(err);
       });
   }, [location]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError('');
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [error]);
 
   if (!data) {
     return (
@@ -58,8 +68,6 @@ const App = () => {
       </div>
     );
   }
-
-  console.log(data);
 
   let icon = '';
   // set icon according to the weather
@@ -71,35 +79,53 @@ const App = () => {
       icon = <BsFillCloudHaze2Fill />;
       break;
     case 'Rain':
-      icon = <IoMdRainy />;
+      icon = <IoMdRainy className='text-[#31CAFB]' />;
       break;
     case 'Clear':
-      icon = <IoMdSunny />;
+      icon = <IoMdSunny className='text-[#FFDE33]' />;
       break;
     case 'Drizzle':
-      icon = <BsCloudDrizzleFill />;
+      icon = <BsCloudDrizzleFill className='text-[#31CAFB]' />;
       break;
     case 'Snow':
-      icon = <IoMdSnow />;
+      icon = <IoMdSnow className='text-[#31CAFB]' />;
       break;
     case 'Thunderstorm':
       icon = <IoMdThunderstorm />;
       break;
   }
 
-  // const months
-  const months = ['January'];
+  console.log(error);
+  // create new date
   let date = new Date();
 
   return (
     <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center pt-24'>
+      {error && (
+        <div className='absolute top-6 bg-white'>{`${error.response.data.message}`}</div>
+      )}
       {/* form */}
-      <form>form</form>
+      <form className='h-16 w-full max-w-[450px] rounded-full bg-black/30 backdrop-blur-[32px] mb-8'>
+        <div className='relative h-full flex items-center justify-between p-2'>
+          <input
+            onChange={(e) => handleInput(e)}
+            className='flex-1 bg-transparent outline-none placeholder:text-white text-white text-[15px] font-light pl-6'
+            type='text'
+            placeholder='Search by city or country'
+          />
+          <button
+            onClick={(e) => handleSubmit(e)}
+            className='bg-[#1ab8ed] hover:bg-[#15abdd] w-20 h-12 rounded-full flex justify-center items-center transition'
+          >
+            <IoMdSearch className='text-2xl text-white' />
+          </button>
+        </div>
+      </form>
       {/* card */}
       <div className='w-full max-w-[450px] bg-black/20 text-white backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
         {/* card top */}
         <div className='flex items-center gap-x-5'>
-          <div className='text-[87px] text-sky-500'>{icon}</div>
+          <div className='text-[87px] '>{icon}</div>
           <div>
             <div className='text-2xl font-semibold'>
               {data.name}, {data.sys.country}
