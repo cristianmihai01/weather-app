@@ -20,7 +20,7 @@ import {
   BsWind,
 } from 'react-icons/bs';
 import { TbTemperatureCelsius } from 'react-icons/tb';
-import { ImSpinner9 } from 'react-icons/im';
+import { ImSpinner8 } from 'react-icons/im';
 
 const App = () => {
   // api key
@@ -34,7 +34,11 @@ const App = () => {
   const handleSubmit = (e) => {
     if (inputValue !== '') {
       setLocation(inputValue);
-    } else {
+    }
+
+    const input = document.querySelector('input');
+    if (input.value === '') {
+      alert(1);
     }
     document.querySelector('input').value = '';
     e.preventDefault();
@@ -134,7 +138,7 @@ const App = () => {
       <div className='w-full max-w-[450px] min-h-[584px] bg-black/20 text-white backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
         {loading ? (
           <div className='w-full h-full flex justify-center items-center'>
-            <ImSpinner9 className='text-white animate-spin' />
+            <ImSpinner8 className='text-white text-5xl animate-spin' />
           </div>
         ) : (
           <>
