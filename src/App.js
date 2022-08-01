@@ -53,9 +53,10 @@ const App = () => {
         setTimeout(() => {
           setData(res.data);
           setLoading(false);
-        }, 2000);
+        }, 1500);
       })
       .catch((err) => {
+        setLoading(false);
         setErrorMsg(err);
       });
   }, [location]);
