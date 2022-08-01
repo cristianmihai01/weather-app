@@ -27,11 +27,13 @@ const App = () => {
   const [data, setData] = useState(null);
   const [location, setLocation] = useState('Bucharest');
   const [inputValue, setInputValue] = useState('');
-  const [error, setError] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     if (inputValue !== '') {
       setLocation(inputValue);
+    } else {
     }
     document.querySelector('input').value = '';
     e.preventDefault();
@@ -43,23 +45,28 @@ const App = () => {
 
   // fetch data
   useEffect(() => {
+    setLoading(true);
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`;
     axios
       .get(url)
       .then((res) => {
-        setData(res.data);
+        setTimeout(() => {
+          setData(res.data);
+          setLoading(false);
+        }, 2000);
       })
       .catch((err) => {
-        setError(err);
+        setErrorMsg(err);
       });
   }, [location]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setError('');
+      setErrorMsg('');
     }, 2000);
+    // clear timer
     return () => clearTimeout(timer);
-  }, [error]);
+  }, [errorMsg]);
 
   if (!data) {
     return (
@@ -95,15 +102,15 @@ const App = () => {
       break;
   }
 
-  console.log(error);
   // create new date
   let date = new Date();
 
   return (
     <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center pt-24'>
-      {error && (
-        <div className='absolute top-6 bg-white'>{`${error.response.data.message}`}</div>
+      {errorMsg && (
+        <div className='absolute top-6 bg-white'>{`${errorMsg.response.data.message}`}</div>
       )}
+      {loading ? 'loading...' : null}
       {/* form */}
       <form className='h-16 w-full max-w-[450px] rounded-full bg-black/30 backdrop-blur-[32px] mb-8'>
         <div className='relative h-full flex items-center justify-between p-2'>
