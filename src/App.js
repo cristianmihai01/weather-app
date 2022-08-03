@@ -22,9 +22,10 @@ import {
 import { TbTemperatureCelsius } from 'react-icons/tb';
 import { ImSpinner8 } from 'react-icons/im';
 
+// api key
+const APIkey = 'bcf2048bc3be154bded8f277f580ba2e';
+
 const App = () => {
-  // api key
-  const APIkey = 'bcf2048bc3be154bded8f277f580ba2e';
   const [data, setData] = useState(null);
   const [location, setLocation] = useState('Bucharest');
   const [inputValue, setInputValue] = useState('');
@@ -72,6 +73,7 @@ const App = () => {
       });
   }, [location]);
 
+  // error message
   useEffect(() => {
     const timer = setTimeout(() => {
       setErrorMsg('');
@@ -120,9 +122,9 @@ const App = () => {
   let date = new Date();
 
   return (
-    <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center pt-24'>
+    <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center'>
       {errorMsg && (
-        <div className='absolute top-6 bg-white'>{`${errorMsg.response.data.message}`}</div>
+        <div className='w-full max-w-[450px] absolute top-10 bg-[#ff208c] text-white capitalize p-4 rounded-md'>{`${errorMsg.response.data.message}`}</div>
       )}
       {/* form */}
       <form
