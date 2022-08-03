@@ -122,9 +122,9 @@ const App = () => {
   let date = new Date();
 
   return (
-    <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center'>
+    <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0'>
       {errorMsg && (
-        <div className='w-full max-w-[450px] absolute top-10 bg-[#ff208c] text-white capitalize p-4 rounded-md'>{`${errorMsg.response.data.message}`}</div>
+        <div className='w-full max-w-[90vw] lg:max-w-[450px] absolute top-2 lg:top-10 bg-[#ff208c] text-white capitalize p-4 rounded-md'>{`${errorMsg.response.data.message}`}</div>
       )}
       {/* form */}
       <form
