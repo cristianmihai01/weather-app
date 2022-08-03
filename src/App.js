@@ -30,6 +30,7 @@ const App = () => {
   const [inputValue, setInputValue] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   const handleSubmit = (e) => {
     if (inputValue !== '') {
@@ -37,9 +38,14 @@ const App = () => {
     }
 
     const input = document.querySelector('input');
+
     if (input.value === '') {
-      alert(1);
+      setAnimate(true);
+      setTimeout(() => {
+        setAnimate(false);
+      }, 500);
     }
+
     document.querySelector('input').value = '';
     e.preventDefault();
   };
@@ -77,7 +83,9 @@ const App = () => {
   if (!data) {
     return (
       <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col justify-center items-center'>
-        <h1>Loading</h1>
+        <div>
+          <ImSpinner8 className='text-5xl text-white animate-spin' />
+        </div>
       </div>
     );
   }
@@ -117,7 +125,11 @@ const App = () => {
         <div className='absolute top-6 bg-white'>{`${errorMsg.response.data.message}`}</div>
       )}
       {/* form */}
-      <form className='h-16 w-full max-w-[450px] rounded-full bg-black/30 backdrop-blur-[32px] mb-8'>
+      <form
+        className={`${
+          animate ? 'animate-shake' : 'animate-none'
+        } h-16 w-full max-w-[450px] rounded-full bg-black/30 backdrop-blur-[32px] mb-8`}
+      >
         <div className='relative h-full flex items-center justify-between p-2'>
           <input
             onChange={(e) => handleInput(e)}
