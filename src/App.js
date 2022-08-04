@@ -41,7 +41,7 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
-    // if input values is not empty
+    // if input value is not empty
     if (inputValue !== '') {
       // set location
       setLocation(inputValue);
